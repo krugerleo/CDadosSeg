@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" android:installLocation="internalOnly" package="com.handmark.expressweather" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="false" android:xlargeScreens="true"/>
+    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <queries>
+        <package android:name="com.google.android.deskclock"/>
+        <package android:name="com.samsung.android.app.clockpack"/>
+    </queries>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="pinsightmedia.locationsdk.permission.CHECK_PRIORITY"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:icon="@drawable/ic_oneweather_storeplay" android:label="@string/app_name" android:name="com.handmark.expressweather.OneWeather" android:networkSecurityConfig="@xml/network_security_config" android:resizeableActivity="false" android:theme="@style/Theme.OneWeather">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data android:name="ag.ak" android:value="a79efd04-8a4b-11e3-9c7f-02006695002a"/>
+        <meta-data android:name="ag.nott" android:value="true"/>
+        <meta-data android:name="ag.noteu" android:value="true"/>
+        <meta-data android:name="ag.thpt" android:value="false"/>
+        <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true"/>
+        <provider android:authorities="com.handmark.expressweather.provider" android:exported="false" android:grantUriPermissions="true" android:name="com.handmark.expressweather.GenericFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/fb_app_id"/>
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/maps_api_key"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.wearable.beta.app" android:resource="@xml/wearable_description"/>
+        <meta-data android:name="com.google.android.wearable.myapp" android:resource="@xml/wearable_description"/>
+        <meta-data android:name="com.google.android.wearable.app" android:resource="@xml/wearable_description"/>
+        <meta-data android:name="com.handmark.expressweather" android:resource="@xml/wearable_description"/>
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dkx4MqEEbzn0EdySb4Zt5lpfzqiL2N6e"/>
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_ket6GDyzpBaYqjAPfW73yldaEziO4L2x"/>
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.SplashActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="oneweather"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:host="1weatherapp.com" android:scheme="http"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <data android:host="1weatherapp.com" android:scheme="https"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:hardwareAccelerated="true" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.handmark.expressweather.ui.activities.MainActivity"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.HealthCenterMapsActivity"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.ManageDailySummaryActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.TrendingActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.settings.SettingsActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.AboutActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.ThemePickerActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.ThemeEditorActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.BackgroundPickerActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.BackgroundPreviewActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.VideoFeedActivity"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.WeatherStoryActivity"/>
+        <activity android:launchMode="singleTask" android:name="com.handmark.expressweather.video.FullScreenVideoActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:name="com.handmark.expressweather.AddLocationActivity" android:theme="@style/Theme.MyAppCompat" android:windowSoftInputMode="adjustResize"/>
+        <activity android:label="@string/app_name" android:name="com.handmark.expressweather.FeedbackActivity" android:screenOrientation="sensor" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:configChanges="keyboardHidden" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.handmark.expressweather.ui.activities.SettingsDashActivity" android:taskAffinity=":dash" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:name="com.handmark.expressweather.PostActivity" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.SettingsLocationsActivity" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.ui.activities.SettingsEditLocationActivity" android:theme="@style/Theme.MyAppCompat"/>
+        <receiver android:exported="true" android:name="com.handmark.expressweather.InstallReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.moengage.firebase.MoEFireBaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.handmark.expressweather.WearNotificationListenerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:name="com.handmark.expressweather.data.UpdateService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="true" android:name="com.handmark.expressweather.DailySummary.DailySummaryHandler"/>
+        <service android:exported="true" android:name="com.handmark.expressweather.data.ClockService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="true" android:name="com.handmark.expressweather.data.CleanupService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:icon="@drawable/ic_clear_day_small" android:label="@string/app_name" android:name="com.handmark.expressweather.data.DashClockService" android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+            <intent-filter>
+                <action android:name="com.google.android.apps.dashclock.Extension"/>
+            </intent-filter>
+            <meta-data android:name="protocolVersion" android:value="1"/>
+            <meta-data android:name="description" android:value="@string/description_dash"/>
+            <meta-data android:name="settingsActivity" android:value=".SettingsDash"/>
+        </service>
+        <service android:exported="true" android:icon="@drawable/ic_oneweather" android:label="@string/app_name" android:name="com.handmark.expressweather.dream.DayDream" android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:name="com.handmark.expressweather.jobtasks.JobClockService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="true" android:name="com.handmark.expressweather.jobtasks.JobWeatherService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:enabled="true" android:exported="false" android:foregroundServiceType="location" android:name="com.handmark.expressweather.LocationUpdatesService"/>
+        <receiver android:name="com.handmark.expressweather.BootReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_media_scan_implicit_receiver" android:name="com.handmark.expressweather.MediaScanReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_SCANNER_FINISHED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.handmark.expressweather.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.handmark.expressweather.OngoingNotifyReceiver"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.handmark.expressweather.billing.DialogPurchase" android:theme="@style/Theme.AdditionalItems"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.WeatherDetailsActivity"/>
+        <activity android:label="@string/help" android:name="com.handmark.expressweather.ui.activities.HelpActivity" android:theme="@style/Theme.OneWeather"/>
+        <activity android:label="@string/privacy_help_title" android:name="com.handmark.expressweather.ui.activities.PrivacyPageActivity" android:theme="@style/Theme.OneWeather"/>
+        <service android:exported="true" android:name="com.handmark.expressweather.NotificationService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <meta-data android:name="android.max_aspect" android:value="2.1"/>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget1x1_name" android:name="com.handmark.expressweather.widgets.Widget1x1">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget1x1"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget2x1_name" android:name="com.handmark.expressweather.widgets.Widget2x1Tracfone">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget2x1_tracfone"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget2x2_name" android:name="com.handmark.expressweather.widgets.Widget2x2">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget2x2"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget2x3_name" android:name="com.handmark.expressweather.widgets.Widget2x3">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget2x3"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget2x3Tracfone_name" android:name="com.handmark.expressweather.widgets.Widget2x3Tracfone">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget2x3_tracfone"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget3x3_name" android:name="com.handmark.expressweather.widgets.Widget3x3">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget3x3"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget4x2_name" android:name="com.handmark.expressweather.widgets.Widget4x2">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x2"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget4x1_name" android:name="com.handmark.expressweather.widgets.Widget4x1">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x1"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget4x1_clock_name" android:name="com.handmark.expressweather.widgets.Widget4x1_Clock">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x1_clock"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget5x1_clock_name" android:name="com.handmark.expressweather.widgets.Widget5x1_Clock">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget5x1_clock"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="@string/widget4x2_clock_name" android:name="com.handmark.expressweather.widgets.Widget4x2_Clock">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x2_clock"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="com.handmark.oneweather.updateStart"/>
+                <action android:name="com.handmark.oneweather.updateStop"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget_clock_search" android:name="com.handmark.expressweather.widgets.Widget4x2_ClockSearch">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget4x2_clock_search"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="com.handmark.oneweather.updateStart"/>
+                <action android:name="com.handmark.oneweather.updateStop"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/enable_widgets" android:label="@string/widget6x3_name" android:name="com.handmark.expressweather.widgets.Widget6x3">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget6x3"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure1x1Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure2x1Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure4x2Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure4x1Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure2x3Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure2x2Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure3x3Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure6x3Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure4x1ClockActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure5x1ClockActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure4x2ClockActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:launchMode="singleInstance" android:name="com.handmark.expressweather.widgets.WidgetConfigure4x2ClockSearchActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.widgets.WidgetConfigure2x3TracfoneActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="com.amazon.device.ads.DTBActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="intent" android:scheme="amazonmobile"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.CCPAActivity"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.handmark.expressweather.CCPADialogActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.handmark.expressweather.ui.activities.VideoDetailsActivity"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.AlertActivity"/>
+        <activity android:launchMode="singleTask" android:name="com.handmark.expressweather.RefreshIntervalActivity"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.HealthCenterDetailsActivity" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.HealthCenterAirQualityActivity" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.NudgeGoPremiumActivity" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.MinutelyForecastActivity" android:screenOrientation="portrait" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:name="com.handmark.expressweather.ui.activities.SetDailySummaryNotificationActivity" android:screenOrientation="portrait" android:theme="@style/Theme.MyAppCompat"/>
+        <receiver android:name="com.handmark.expressweather.ui.listeners.NudgeWidgetReceiver"/>
+        <activity android:name="com.handmark.expressweather.WebViewActivity" android:screenOrientation="portrait" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:name="com.handmark.expressweather.ShortsDetailsActivity" android:screenOrientation="portrait" android:theme="@style/Theme.MyAppCompat"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.RewardedMraidActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MoPubActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.MoPubBrowser" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidVideoPlayerActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.privacy.ConsentDialogActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <service android:exported="false" android:name="com.moengage.richnotification.MoERichPushIntentService"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.facebook.ads.AudienceNetworkActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.handmark.expressweather.AudienceNetworkContentProvider" android:exported="false" android:name="com.facebook.ads.AudienceNetworkContentProvider"/>
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="true" android:name="com.unity3d.services.ads.adunit.AdUnitActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="true" android:name="com.unity3d.services.ads.adunit.AdUnitTransparentActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="false" android:name="com.unity3d.services.ads.adunit.AdUnitTransparentSoftwareActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode" android:hardwareAccelerated="false" android:name="com.unity3d.services.ads.adunit.AdUnitSoftwareActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.fyber.inneractive.sdk.activities.InneractiveInternalBrowserActivity" android:screenOrientation="fullUser"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.fyber.inneractive.sdk.activities.InneractiveFullscreenAdActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.fyber.inneractive.sdk.activities.InneractiveRichMediaVideoPlayerActivityCore" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.fyber.inneractive.sdk.video.IAVideoKit">
+            <intent-filter>
+                <action android:name="com.fyber.inneractive.sdk.intent.action.REGISTER_KIT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.fyber.inneractive.sdk.mraid.IAMraidKit">
+            <intent-filter>
+                <action android:name="com.fyber.inneractive.sdk.intent.action.REGISTER_KIT"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent"/>
+        <provider android:authorities="com.handmark.expressweather.mobileadsinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.android.gms.ads.MobileAdsInitProvider"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.ads.AdService"/>
+        <provider android:authorities="com.handmark.expressweather.FlurryContentProvider" android:exported="false" android:name="com.flurry.android.agent.FlurryContentProvider"/>
+        <provider android:authorities="com.handmark.expressweather.workmanager-init" android:directBootAware="false" android:exported="false" android:multiprocess="true" android:name="androidx.work.impl.WorkManagerInitializer"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name="com.pinsightmedia.locationsdk.LocationService" android:permission="pinsightmedia.locationsdk.permission.CHECK_PRIORITY">
+            <intent-filter>
+                <action android:name="locationsdk.action.CHECK_PRIORITY"/>
+                <data android:host="com.handmark.expressweather" android:scheme="lsdk"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.pinsightmedia.locationsdk.LocationJobService">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:exported="false" android:foregroundServiceType="location" android:name="com.pinsightmedia.locationsdk.LocationUpdatesService"/>
+        <receiver android:exported="false" android:name="com.pinsightmedia.locationsdk.LocationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name="com.firebase.jobdispatcher.GooglePlayReceiver" android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <provider android:authorities="com.handmark.expressweather.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <activity android:enabled="false" android:exported="false" android:launchMode="singleInstance" android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity" android:process=":playcore_missing_splits_activity" android:stateNotNeeded="true"/>
+        <activity android:enabled="false" android:exported="false" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:process=":playcore_dialog_wrapper_activity" android:stateNotNeeded="true" android:theme="@style/Theme.PlayCore.Transparent"/>
+        <service android:enabled="false" android:exported="true" android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"/>
+        <service android:exported="false" android:name="com.moe.pushlibrary.MoEWorker"/>
+        <provider android:authorities="com.handmark.expressweather.moengage.provider" android:exported="false" android:name="com.moe.pushlibrary.providers.MoEProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.moengage.core.MoEAlarmReceiver"/>
+        <service android:name="com.moengage.core.DataSyncJob" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.moengage.pushbase.MoEPushReceiver"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.moengage.pushbase.activities.PushTracker" android:noHistory="true" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="orientation|screenSize" android:excludeFromRecents="true" android:launchMode="singleTask" android:name="com.moengage.pushbase.activities.PushClickDialogTracker" android:taskAffinity=":NotificationDialog" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <service android:exported="false" android:name="com.moengage.pushbase.push.MoEPushWorker"/>
+        <receiver android:exported="false" android:name="com.moengage.geofence.GeoFenceBroadcastReceiver"/>
+        <service android:name="com.moengage.geofence.GeofenceJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.moengage.geofence.CampaignSyncJob" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.moengage.geofence.CampaignSyncAlarm"/>
+        <service android:exported="false" android:name="com.moengage.geofence.LocationIntentService"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.moengage.pushamp.PushAmpAlarmReceiver"/>
+        <service android:exported="false" android:name="com.moengage.pushamp.PushAmpIntentService"/>
+        <service android:name="com.moengage.pushamp.PushAmpSyncJob" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.moengage.addon.trigger.DTIntentService"/>
+        <service android:name="com.moengage.addon.trigger.DTSyncJob" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.moengage.addon.trigger.DTSyncAlarmReceiver"/>
+        <activity android:name="com.moengage.integrationverifier.IntegrationVerificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="integration" android:scheme="moengage"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

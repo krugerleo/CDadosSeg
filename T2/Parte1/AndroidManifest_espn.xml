@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" package="com.espn.score_center" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <permission android:name="com.espn.provider.permission" android:protectionLevel="signature"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <queries>
+        <package android:name="com.espn.fantasy.lm.football"/>
+        <package android:name="com.neulion.espnplayer"/>
+        <package android:name="com.google.android.gms"/>
+        <intent>
+            <action android:name="android.intent.action.SEND"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:maxSdkVersion="28" android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:maxSdkVersion="28" android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
+    <queries>
+        <package android:name="com.twitter.android"/>
+        <package android:name="com.instagram.android"/>
+    </queries>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <queries>
+        <package android:name="com.android.chrome"/>
+        <intent>
+            <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_INQUIRY"/>
+        </intent>
+        <intent>
+            <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_ELECTION"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:logo="@drawable/ic_logo" android:name="com.espn.framework.EspnApplication" android:networkSecurityConfig="@xml/network_security_config" android:resizeableActivity="false" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="false" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+        <activity android:name="com.espn.sportscenter.ui.EspnLaunchActivity" android:screenOrientation="locked" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.dtci.mobile.deeplinking.DeepLinkLoadingActivity">
+            <intent-filter>
+                <action android:name="com.espn.customAction"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.MONKEY"/>
+                <data android:host="*" android:scheme="sportscenter"/>
+                <data android:host="t4jsample" android:scheme="oauth"/>
+            </intent-filter>
+            <meta-data android:name="android.service.chooser.chooser_target_service" android:value=".ChooserTargetService"/>
+        </activity>
+        <service android:name="com.espn.notifications.fcm.EspnFcmListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.espn.notifications.fcm.EspnInstanceIDListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:name="com.espn.framework.broadcastreceiver.LocaleChangedChannelsBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.espn.framework.ui.offline.OfflineMediaReceiver">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.dtci.mobile.watch.WatchPageActivity"/>
+        <activity android:name="com.dtci.mobile.alerts.analytics.TrackAlertLaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <activity android:name="com.espn.framework.ui.UpgradeActivity"/>
+        <activity android:name="com.dtci.mobile.favorites.manage.leagues.FavoriteSportsActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:name="com.dtci.mobile.favorites.manage.teams.FavoriteTeamsActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.framework.ui.main.MasterDetailActivity" android:theme="@style/Theme.AppCompat.FrameworkMediaRouter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.framework.ui.alerts.NotificationSettingsActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.leagueslist.LeaguesActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.listen.FullScreenPlayerActivity" android:theme="@style/EspnPlayer.Listen" android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.espn.watch.WatchAuthActivity" android:theme="@style/Theme.AppCompat.Framework.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.settings.SettingsActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.framework.ui.offline.OfflineTakeoverActivity" android:theme="@style/AppTheme.WatchTabDark">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.framework.ui.settings.WatchProviderActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.framework.util.DebugActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.framework.util.QualityDashboardActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="com.espn.framework.util.DownloadQualityActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="com.dtci.mobile.video.freepreview.debug.TempPassDashboardActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="com.espn.framework.util.IconFontTestActivity" android:theme="@style/AppTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.espn.framework.ui.photoviewer.PhotoViewerActivity" android:theme="@style/PhotoViewerActionBar"/>
+        <activity android:launchMode="singleTop" android:name="com.dtci.mobile.search.SearchActivity" android:theme="@style/AppTheme.Search">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.espn.framework.ui.WebBrowserActivity" android:theme="@style/InAppBrowser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.dtci.mobile.settings.nielsen.NielsenWebBrowserActivity" android:theme="@style/InAppBrowser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.alerts.options.AlertsOptionsActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.alerts.deeplinking.SetAlertDialogActivity" android:theme="@style/AlertDialogThemeLongTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.favorites.manage.SetFavoriteDeepLinkActivity" android:theme="@style/Transparent.Gray">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.listen.setpodcast.SetPodcastDeepLinkActivity" android:theme="@style/AlertDialogThemeLongTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.favorites.manage.FavoritesManagementActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.scores.widget.analytics.TrackWidgetLaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:name="com.amazon.device.ads.DTBActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="intent" android:scheme="amazonmobile"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.espn.onboarding.espnonboarding.EspnOnboardingActivity" android:theme="@style/OnboardingTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.dtci.mobile.edition.detection.EditionSwitchHelperActivity" android:theme="@style/OnboardingTheme"/>
+        <activity android:name="com.dtci.mobile.video.deeplinking.VideoLoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.gamedetails.deeplinking.GameLoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.dtci.mobile.edition.change.EditionSwitchActivity"/>
+        <activity android:name="com.dtci.mobile.edition.change.FavoriteEditionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.dtci.mobile.settings.video.VideoSettingsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="com.espn.framework.ui.subscriptions.SubscriptionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="com.espn.framework.abtest.OptimizelyDashboardActivity" android:theme="@style/AppTheme"/>
+        <activity android:name="com.dtci.mobile.settings.defaulttab.DefaultTabSettingActivity"/>
+        <activity android:name="com.dtci.mobile.settings.contactsupport.ContactSupportSettingActivity"/>
+        <activity android:name="com.dtci.mobile.favorites.manage.playerbrowse.PlayerBrowseActivity"/>
+        <service android:name="com.espn.notifications.NotificationManagerJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:label="DirectShareService" android:name="com.espn.framework.data.service.DirectShareService" android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.chooser.ChooserTargetService"/>
+            </intent-filter>
+        </service>
+        <receiver android:name="com.dtci.mobile.scores.widget.ScoresWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_DISABLED"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/main_widget_info"/>
+        </receiver>
+        <receiver android:exported="false" android:name="com.dtci.mobile.deeplinking.WatchEspnDeepLinkBroadcastReceiver"/>
+        <receiver android:exported="false" android:name="com.dtci.mobile.alerts.local.LocalAlertsBroadcastReceiver"/>
+        <receiver android:exported="true" android:name="com.dtci.mobile.analytics.referral.GPBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.espn.framework.navigation.guides.ClubhouseGuideReceiver"/>
+        <receiver android:name="com.espn.share.ShareReceiver"/>
+        <receiver android:name="com.espn.framework.network.receiver.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.dtci.mobile.video.freepreview.FreePreviewAlarm"/>
+        <receiver android:exported="false" android:name="com.dtci.mobile.scores.widget.WidgetActionReceiver">
+            <intent-filter>
+                <action android:name="ScoresWidget.BUTTON_DOWN"/>
+                <action android:name="ScoresWidget.BUTTON_UP"/>
+                <action android:name="ScoresWidget.TOP_SPORTS_CLICKED"/>
+                <action android:name="ScoresWidget.LOGO_CLICK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.dtci.mobile.shortcut.receiver.ShortcutResultReceiver"/>
+        <service android:configChanges="keyboardHidden|orientation|screenSize" android:enabled="true" android:name="com.dtci.mobile.scores.widget.WidgetUpdatingService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTop" android:name="com.dtci.mobile.video.vod.SportsCenterVodPlayerActivity" android:theme="@style/EspnPlayer.VOD"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.dtci.mobile.chromecast.CastNotificationProxyActivity"/>
+        <activity android:name="com.espn.framework.util.debugmetadata.MetadataDebugActivity" android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <service android:exported="false" android:name="com.espn.listen.ListenPlayerService"/>
+        <receiver android:name="com.espn.android.media.chromecast.EspnMediaIntentReceiver"/>
+        <activity android:launchMode="singleTop" android:name="com.dtci.mobile.clubhousebrowser.ClubhouseBrowserActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden" android:name="com.dtci.mobile.clubhouse.ClubhouseActivity" android:theme="@style/AppTheme" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.dtci.mobile.paywall.PaywallActivity" android:theme="@style/BamPaywallActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.dtci.mobile.video.live.LivePlayerActivity" android:theme="@style/VideoLibTheme.VideoPlayer"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.dtci.mobile.video.vod.VodPlaylistActivity" android:theme="@style/AppTheme.VodPlaylist"/>
+        <activity android:name="com.espn.framework.media.nudge.AccountLinkActivity"/>
+        <activity android:name="com.dtci.mobile.paywall.postpurchasescreen.PostPurchaseScreenActivity" android:theme="@style/BamPaywallActivity"/>
+        <activity android:name="com.dtci.mobile.paywall.accounthold.AccountHoldActivity" android:theme="@style/BamPaywallActivity"/>
+        <activity android:name="com.dtci.mobile.video.permissions.RequestLocationPermissionActivity" android:theme="@style/Theme.AppCompat.Framework.Transparent"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME" android:value="com.dtci.mobile.chromecast.CastOptionsProvider"/>
+        <meta-data android:name="android.max_aspect" android:value="2.1"/>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notifications_channel_id"/>
+        <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true"/>
+        <activity android:launchMode="singleTop" android:name="com.storyteller.ui.onboarding.OnboardingActivity" android:theme="@style/OnboardingActivityTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="com.storyteller.ui.onboarding.OnboardingActivityTablet" android:theme="@style/OnboardingActivityTheme"/>
+        <activity android:configChanges="uiMode" android:launchMode="singleTop" android:name="com.storyteller.ui.pager.StoryPagerActivity" android:theme="@style/PagerActivityTheme"/>
+        <activity android:configChanges="orientation|screenSize|uiMode" android:launchMode="singleTop" android:name="com.storyteller.ui.pager.StoryPagerActivityTablet" android:theme="@style/PagerActivityTheme"/>
+        <activity android:launchMode="singleTop" android:name="com.storyteller.ui.link.LinkActivity" android:screenOrientation="locked" android:theme="@style/LinkActivityTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="com.storyteller.ui.link.LinkActivityTablet" android:theme="@style/LinkActivityTheme"/>
+        <provider android:authorities="com.espn.score_center.storyteller.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <provider android:authorities="com.espn.score_center.StorytellerProvider" android:enabled="true" android:exported="false" android:name="com.storyteller.StorytellerProvider"/>
+        <receiver android:name="com.storyteller.ui.common.ShareBroadcastReceiver"/>
+        <service android:name="com.espn.libScoreBubble.BubbleService"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.disney.id.android.lightbox.LightboxActivity" android:theme="@style/OneIDTheme"/>
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true"/>
+        <service android:exported="false" android:label="AccessEnabler service" android:name="com.adobe.adobepass.accessenabler.api.AccessEnablerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <provider android:authorities="com.espn.score_center.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
+        <provider android:authorities="com.espn.score_center.chuck.provider" android:exported="false" android:name="com.readystatesoftware.chuck.internal.data.ChuckContentProvider"/>
+        <activity android:label="@string/chuck_name" android:launchMode="singleTask" android:name="com.readystatesoftware.chuck.internal.ui.MainActivity" android:taskAffinity="com.readystatesoftware.chuck.task" android:theme="@style/Chuck.Theme"/>
+        <activity android:name="com.readystatesoftware.chuck.internal.ui.TransactionActivity" android:parentActivityName="com.readystatesoftware.chuck.internal.ui.MainActivity" android:theme="@style/Chuck.Theme"/>
+        <service android:exported="false" android:name="com.readystatesoftware.chuck.internal.support.ClearTransactionsService"/>
+        <receiver android:enabled="true" android:name="com.disney.data.analytics.network.NetworkStateChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.disney.data.analytics.network.SaveRequestBodyToDBService"/>
+        <receiver android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaNotificationService"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.ReconnectionService"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.espn.score_center.mobileadsinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.android.gms.ads.MobileAdsInitProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:exported="false" android:name="com.appboy.ui.AppboyWebViewActivity"/>
+        <activity android:exported="false" android:name="com.appboy.ui.activities.AppboyFeedActivity"/>
+        <activity android:exported="false" android:name="com.appboy.ui.activities.AppboyContentCardsActivity"/>
+        <activity android:exported="false" android:name="com.appboy.push.AppboyNotificationRoutingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:exported="false" android:name="com.appboy.AppboyFcmReceiver"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.espn.score_center.DebugDBInitProvider" android:enabled="true" android:exported="false" android:name="com.amitshekhar.debug.DebugDBInitProvider"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <receiver android:exported="true" android:name="com.kochava.base.ReferralReceiver" android:priority="999">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.espn.score_center.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <service android:enabled="true" android:exported="false" android:name="com.optimizely.ab.android.datafile_handler.DatafileService"/>
+        <service android:exported="false" android:name="com.optimizely.ab.android.event_handler.EventIntentService"/>
+        <provider android:authorities="com.espn.score_center.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="2.0.3"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:name="com.optimizely.ab.android.shared.JobWorkService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.optimizely.ab.android.shared.ScheduledJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.appboy.receivers.AppboyActionReceiver"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.adobe.adobepass.accessenabler.api.utils.android.CustomTabManager"/>
+        <activity android:launchMode="singleTask" android:name="com.adobe.adobepass.accessenabler.api.utils.android.CustomTabGetAuthN" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="@string/redirect_uri" android:scheme="adobepass"/>
+            </intent-filter>
+        </activity>
+        <provider android:authorities="com.espn.score_center.GlobalStorageProvider" android:exported="true" android:grantUriPermissions="true" android:name="com.adobe.adobepass.accessenabler.services.storage.android.global.GlobalStorageProvider"/>
+        <receiver android:name="com.adobe.adobepass.accessenabler.services.storage.android.global.GlobalStorageBroadcastRequestReceiver">
+            <intent-filter>
+                <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_INQUIRY"/>
+                <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_ELECTION"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

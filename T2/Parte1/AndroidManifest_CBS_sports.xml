@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" android:installLocation="auto" package="com.handmark.sportcaster" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <permission android:name="android.permission.GET_ACCOUNTS"/>
+    <permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <queries>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="http"/>
+        </intent>
+        <package android:name="com.android.chrome"/>
+        <intent>
+            <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_INQUIRY"/>
+        </intent>
+        <intent>
+            <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_ELECTION"/>
+        </intent>
+        <package android:name="com.taboola.taboolasdkmonitor"/>
+    </queries>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.TRANSMIT_IR"/>
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="false" android:fullBackupContent="false" android:icon="@mipmap/launch_icon" android:label="@string/app_name" android:largeHeap="true" android:name="com.cbssports.sportcaster.SportCaster" android:networkSecurityConfig="@xml/network_security_config" android:requestLegacyExternalStorage="true" android:resizeableActivity="false" android:supportsRtl="true" android:theme="@style/ArrowHeadTheme" android:usesCleartextTraffic="true">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="OFFER_URL" android:value="http://panel.gwallet.com/network-node/track/8512c3c24fe6a00c/1x1.gif"/>
+        <meta-data android:name="com.urbanairship.autopilot" android:value="com.cbssports.notifications.SportsAutopilot"/>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule"/>
+        <meta-data android:name="com.cbssports.glide.GlideConfig" android:value="GlideModule"/>
+        <activity android:launchMode="singleTop" android:name="tv.vizbee.api.RemoteActivity" android:noHistory="false" android:theme="@style/Theme.Vizbee.Custom">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="video" android:scheme="@string/vizbee_app_id"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent"/>
+        <provider android:authorities="com.handmark.sportcaster.provider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.cbssports.splash.SplashActivity" android:theme="@style/ArrowheadSplashTheme">
+            <intent-filter>
+                <data android:scheme="cbssportsapp-branch"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="cbs-sports.app.link" android:scheme="https"/>
+                <data android:host="cbs-sports-alternate.app.link" android:scheme="https"/>
+                <data android:host="cbs-sports.test-app.link" android:scheme="https"/>
+                <data android:host="cbs-sports-alternate.test-app.link" android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/app_name" android:name="com.handmark.sportcaster.Navigator" android:targetActivity="com.cbssports.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:name="com.cbssports.eventdetails.v1.ui.GameDetailsActivity" android:theme="@style/AppThemeLight"/>
+        <activity android:name="com.cbssports.onboarding.ui.OnboardingActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.cbssports.sportcaster.PhotoDetails" android:theme="@style/AppThemeLight"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.cbssports.sportcaster.WebViewActivity" android:theme="@style/ArrowHeadArticleTheme"/>
+        <activity android:configChanges="keyboardHidden" android:label="@string/sign_in" android:name="com.cbssports.tweetcaster.NewAccountActivity" android:theme="@style/AppThemeLight"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.cbssports.tweetcaster.NewTwitActivity" android:theme="@style/AppThemeLight" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:launchMode="singleTask" android:name="com.cbssports.videoplayer.player.ui.VideoPlayerActivity" android:resizeableActivity="true" android:supportsPictureInPicture="true" android:taskAffinity="com.cbssports.videoplayer.ui.VideoPlayerActivity" android:theme="@style/VideoPlayerActivityTheme">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.cbssports.news.article.ui.ArticleActivity" android:parentActivityName="com.cbssports.mainscreen.MainActivity" android:theme="@style/ArrowHeadArticleTheme"/>
+        <activity android:name="com.cbssports.teampage.TeamActivity" android:theme="@style/ArrowHeadTheme"/>
+        <activity android:name="com.cbssports.cbssn.ui.mvpdPicker.TopAdobeProvidersActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:launchMode="singleTop" android:name="com.cbssports.cbssn.ui.mvpdPicker.AllAdobeProvidersActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/adobe_providers_searchable"/>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:name="com.cbssports.cbssn.ui.AdobePassDelegateActivity" android:theme="@style/Theme.AppCompat.NoActionBar.Translucent"/>
+        <activity android:name="com.cbssports.fantasy.brackets.ui.BracketRegionActivity" android:theme="@style/BracketGamesTheme" android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsTopLevelActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsLeagueNewsActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsBracketGamesActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsBracketPoolActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsFantasyActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsFavoriteActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsDraftActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.alerts.AlertsBehaviorActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.MoPubBrowser" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidVideoPlayerActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.inmobi.rendering.InMobiAdActivity" android:resizeableActivity="false" android:theme="@android:style/Theme.NoTitleBar"/>
+        <service android:exported="false" android:name="com.cbssports.appwidgets.WidgetRefreshJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:launchMode="singleTop" android:name="com.cbssports.appwidgets.ui.WidgetConfigureNews" android:theme="@style/ArrowHeadThemeSecondaryScreen" android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cbssports.teampage.depthchart.ui.DepthChartActivity" android:theme="@style/ArrowHeadThemeDarkActionBar"/>
+        <activity android:label="@string/oss_license_title" android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity" android:theme="@style/OSSActionBar"/>
+        <activity android:name="com.google.android.gms.oss.licenses.OssLicensesActivity" android:theme="@style/OSSActionBar"/>
+        <activity android:name="com.cbssports.eventdetails.v2.game.shotchartfilter.ui.ShotChartFiltersActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <receiver android:label="CBS Sports News" android:name="com.handmark.sportcaster.FourByTwoNews">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_news_4x2"/>
+        </receiver>
+        <service android:exported="false" android:name="com.cbssports.appwidgets.NewsWidgetRemoteViewsService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <service android:exported="false" android:name="com.cbssports.sportcaster.RadioService"/>
+        <service android:exported="false" android:label="AccessEnabler service" android:name="com.adobe.adobepass.accessenabler.api.AccessEnablerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.cbssports.sportcaster.RadioReceiver">
+            <intent-filter>
+                <action android:name="com.handmark.sportcaster.radioservice.started"/>
+                <action android:name="com.handmark.sportcaster.radioservice.paused"/>
+                <action android:name="com.handmark.sportcaster.radioservice.failed"/>
+                <action android:name="com.handmark.sportcaster.radioservice.stopped"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateMainFlowActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreatePoolTypeActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateGroupNameActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateLeagueTypeActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreatePoolFormatActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreatePickAmountActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreatePicksDeadlineActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateSetupTypeActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateWeightsActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateMissedWeeksActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreatePickPercentagesActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateTiebreakerActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateRecapActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateCongratsActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateSurvivorTiesActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateSurvivorWinnersActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateInviteActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.lobby.OpmLobbyActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.lobby.OpmManageSettingsActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.lobby.OpmViewSettingsActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.lobby.OpmManageMemberListActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateConstitutionActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreateFinancesActivity"/>
+        <activity android:name="com.cbssports.fantasy.opm.matchupanalysis.OpmMatchupAnalysisActivity" android:theme="@style/AppThemeLight"/>
+        <activity android:name="com.cbssports.fantasy.opm.create.OpmCreatePostseasonActivity"/>
+        <activity android:name="com.cbssports.fantasy.brackets.create.CreateLeagueActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.fantasy.brackets.create.CreateChallengeEntryActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.fantasy.brackets.ui.BracketAllRegionsActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.fantasy.brackets.matchup.ui.MatchupActivity"/>
+        <activity android:name="com.cbssports.fantasy.brackets.roundbyround.ui.RoundByRoundActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.fantasy.brackets.standings.ui.BracketStandingsActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.fantasy.brackets.rules.ui.ScoringRulesActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.fantasy.brackets.hideshowpools.ui.HideShowPoolsActivity" android:theme="@style/BracketGamesTheme"/>
+        <activity android:name="com.cbssports.drafttracker.teampage.ui.TeamWarRoomActivity" android:theme="@style/ArrowHeadThemeDarkActionBar"/>
+        <activity android:name="com.cbssports.settings.debug.TestNotificationsActivity"/>
+        <activity android:name="com.cbssports.settings.debug.TestIrisNotificationsActivity"/>
+        <activity android:name="com.cbssports.dailyleaders.ui.DailyLeadersActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.eventdetails.v2.golf.ui.GolfEventDetailsActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.eventdetails.v2.golf.scorecard.ui.GolfScorecardActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.eventdetails.v2.game.ui.GameDetailsActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.onboarding.ui.LoginActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.cbssports.leaguesections.podcasts.podcastdetails.ui.PodcastDetailsActivity"/>
+        <activity android:name="com.cbssports.leaguesections.standings.StandingsConferenceActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.teampage.stats.playerstats.ui.TeamPlayerStatsActivity" android:theme="@style/ArrowHeadThemeDarkActionBar"/>
+        <activity android:name="com.cbssports.settings.debug.BannerAdDebugActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.leaguesections.watch.eventdetails.ui.UpcomingEventDetailsActivity" android:theme="@style/ArrowHeadThemeWatch"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:theme="@style/com_facebook_activity_theme"/>
+        <activity android:exported="true" android:name="com.facebook.CustomTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="@string/fb_login_protocol_scheme"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cbssports.rundown.ui.RundownActivity" android:screenOrientation="portrait" android:theme="@style/RundownTheme"/>
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_app_key"/>
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_app_key_test"/>
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false"/>
+        <receiver android:exported="true" android:name="com.cbssports.common.InstallReferrerCommonReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.cbssports.eventdetails.v2.common.eventmedia.SimpleGameArticleActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.playerprofile.ui.PlayerProfileActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:label="@string/settings" android:name="com.cbssports.settings.SettingsActivity" android:parentActivityName="com.cbssports.mainscreen.MainActivity" android:theme="@style/ArrowHeadThemeSettings"/>
+        <activity android:name="com.cbssports.settings.debug.hud.HudTeamsActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.debug.livevideo.ui.LiveVideoSiteActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.qualtrics.digital.QualtricsSurveyActivity"/>
+        <activity android:name="com.qualtrics.digital.QualtricsPopOverActivity" android:theme="@style/Theme.Qualtrics"/>
+        <activity android:label="@string/title_activity_settings_debug" android:name="com.cbssports.settings.debug.SettingsDebugActivity" android:theme="@style/ArrowHeadThemeSecondaryScreen"/>
+        <activity android:name="com.cbssports.settings.teams.AddTeamsActivity"/>
+        <activity android:name="com.cbssports.allaccess.ui.AllAccessLoginActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.cbssports.allaccess.ui.AllAccessDelegateActivity" android:theme="@style/Theme.AppCompat.NoActionBar.Translucent"/>
+        <activity android:launchMode="singleTask" android:name="com.cbssports.mainscreen.MainActivity" android:theme="@style/ArrowHeadTheme">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:host="*" android:scheme="cbssportsapp"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.cbssports.arenapage.ArenaActivity" android:parentActivityName="com.cbssports.mainscreen.MainActivity" android:theme="@style/ArrowHeadTheme"/>
+        <provider android:authorities="com.handmark.sportcaster.materialcalendarviewinitprovider" android:enabled="true" android:exported="false" android:name="com.prolificinteractive.materialcalendarview.MaterialCalendarViewInitProvider"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MoPubActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MoPubFullscreenActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.privacy.ConsentDialogActivity" android:theme="@style/MoPubFullscreenTheme"/>
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:hardwareAccelerated="true" android:name="com.inmobi.ads.rendering.InMobiAdActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.adobe.adobepass.accessenabler.api.utils.android.CustomTabManager"/>
+        <activity android:launchMode="singleTask" android:name="com.adobe.adobepass.accessenabler.api.utils.android.CustomTabGetAuthN" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="@string/redirect_uri" android:scheme="adobepass"/>
+            </intent-filter>
+        </activity>
+        <provider android:authorities="com.handmark.sportcaster.GlobalStorageProvider" android:exported="true" android:grantUriPermissions="true" android:name="com.adobe.adobepass.accessenabler.services.storage.android.global.GlobalStorageProvider"/>
+        <receiver android:name="com.adobe.adobepass.accessenabler.services.storage.android.global.GlobalStorageBroadcastRequestReceiver">
+            <intent-filter>
+                <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_INQUIRY"/>
+                <action android:name="com.adobe.adobepass.accessenabler.services.storage.global.GLOBAL_DATABASE_URI_ELECTION"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <service android:exported="false" android:name="com.urbanairship.push.fcm.AirshipFirebaseMessagingService">
+            <intent-filter android:priority="-1">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="false" android:name="com.urbanairship.location.LocationReceiver"/>
+        <activity android:exported="false" android:name="com.urbanairship.iam.html.HtmlActivity" android:theme="@style/UrbanAirship.InAppHtml.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.fullscreen.FullScreenActivity" android:theme="@style/UrbanAirship.InAppFullscreen.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.modal.ModalActivity" android:theme="@style/UrbanAirship.InAppModal.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <receiver android:exported="false" android:name="com.urbanairship.automation.alarms.AlarmOperationReceiver">
+            <intent-filter>
+                <action android:name="com.urbanairship.automation.alarms.ALARM_FIRED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.media.MediaNotificationService"/>
+        <service android:exported="false" android:name="com.google.android.gms.cast.framework.ReconnectionService"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <receiver android:enabled="true" android:exported="false" android:name="com.qualtrics.digital.QualtricsNotificationManager">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.handmark.sportcaster.TaboolaContextProvider" android:enabled="true" android:exported="false" android:initOrder="10" android:name="com.taboola.android.TaboolaContextProvider"/>
+        <activity android:excludeFromRecents="true" android:launchMode="singleTask" android:name="com.taboola.android.global_components.fsd.FSDActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity-alias android:enabled="false" android:name="com.taboola.android.FSDAliasActivity" android:targetActivity="com.taboola.android.global_components.fsd.FSDActivity">
+            <intent-filter android:label="">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="fsd" android:scheme="tblfsd"/>
+            </intent-filter>
+        </activity-alias>
+        <receiver android:exported="false" android:name="com.taboola.android.global_components.fsd.FSDReceiver"/>
+        <provider android:authorities="com.handmark.sportcaster.workmanager-init" android:directBootAware="false" android:exported="false" android:multiprocess="true" android:name="androidx.work.impl.WorkManagerInitializer"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.chartbeat.androidsdk.ChartbeatService"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <provider android:authorities="com.handmark.sportcaster.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="false" android:name="com.urbanairship.push.NotificationProxyActivity" android:taskAffinity="com.urbanairship.push.NotificationProxyActivity" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:exported="false" android:name="com.urbanairship.util.HelperActivity" android:theme="@style/UrbanAirship.HelperActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.google.PlayServicesErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.actions.RateAppActivity" android:theme="@style/UrbanAirship.RateAppActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_RATE_APP_INTENT_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.urbanairship.job.AirshipService"/>
+        <service android:name="com.urbanairship.job.AndroidJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.urbanairship.push.NotificationProxyReceiver">
+            <intent-filter android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED"/>
+                <category android:name="com.handmark.sportcaster"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.urbanairship.locale.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.handmark.sportcaster.urbanairship.provider" android:exported="false" android:name="com.urbanairship.UrbanAirshipProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <provider android:authorities="com.handmark.sportcaster.mobileadsinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.android.gms.ads.MobileAdsInitProvider"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.ads.AdService"/>
+        <provider android:authorities="com.handmark.sportcaster.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <provider android:authorities="com.handmark.sportcaster.MarketingInitProvider" android:exported="false" android:name="com.facebook.marketing.internal.MarketingInitProvider"/>
+        <provider android:authorities="com.handmark.sportcaster.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <receiver android:exported="false" android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+    </application>
+</manifest>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:amazon="http://schemas.amazon.com/apk/res/android" xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="uk.co.bbc.android.sportdomestic" platformBuildVersionCode="23" platformBuildVersionName="6.0-2704002">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <permission android:name="uk.co.bbc.android.sportdomestic.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <permission android:name="uk.co.bbc.android.sportdomestic.permission.RECEIVE_ADM_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="uk.co.bbc.android.sportdomestic.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="uk.co.bbc.android.sportdomestic.permission.RECEIVE_ADM_MESSAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:name="uk.co.bbc.android.sport.SportApplication" android:theme="@style/Theme.BBCSport">
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTop" android:name="uk.co.bbc.android.sport.MainActivity" android:theme="@style/Theme.BBCSport.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="optly4619892104"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="www.bbc.co.uk" android:pathPrefix="@string/sport_path_prefix" android:scheme="@string/http_url_scheme"/>
+                <data android:host="m.bbc.co.uk" android:pathPrefix="@string/sport_path_prefix" android:scheme="@string/http_url_scheme"/>
+                <data android:host="www.bbc.com" android:pathPrefix="@string/sport_path_prefix" android:scheme="@string/http_url_scheme"/>
+                <data android:host="m.bbc.com" android:pathPrefix="@string/sport_path_prefix" android:scheme="@string/http_url_scheme"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTop" android:name="uk.co.bbc.android.sport.feature.radio.ui.RadioViewActivity"/>
+        <activity android:exported="true" android:name="uk.co.bbc.android.sport.feature.radio.ui.RadioNotificationActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="uk.co.bbc.android.sport.feature.cast.ui.CastControlActivity" android:parentActivityName="uk.co.bbc.android.sport.MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="uk.co.bbc.android.sport.MainActivity"/>
+        </activity>
+        <activity android:exported="true" android:name="uk.co.bbc.android.sport.feature.cast.CastMediaPlayerActivity"/>
+        <service android:exported="true" android:name="uk.co.bbc.android.sport.feature.radio.RadioPlayerService"/>
+        <service android:name="uk.co.bbc.android.sport.feature.cast.CastService">
+            <intent-filter>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.PLAY"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.PAUSE"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.RESUME"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.STOP"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.TOGGLE_PLAYBACK"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.SET_VOLUME"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.MUTE"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.UNMUTE"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.SUBTITLES_ON"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.cast.action.SUBTITLES_OFF"/>
+            </intent-filter>
+        </service>
+        <receiver android:name="uk.co.bbc.android.sport.feature.cast.CastIntentReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="amazon_3d_icon" android:value="bbc_sports:bbc_sport_logo.scene"/>
+        <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="ee108d9d6686b54e0906d84db887da95"/>
+        <uses-library android:name="com.amazon.device.home" android:required="false"/>
+        <amazon:enable-feature android:name="com.amazon.device.messaging" android:required="false"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTop" android:name="uk.co.bbc.android.sport.childbrowser.ChildBrowserActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:launchMode="singleTop" android:name="uk.co.bbc.android.sport.whatsnew.WhatsNewActivity" android:theme="@style/Theme.BBCSport.NoActionBar"/>
+        <activity android:launchMode="singleTop" android:name="uk.co.bbc.android.sport.feature.push.ui.AlertCentreActivity"/>
+        <activity android:name="uk.co.bbc.android.sport.feature.push.ui.NodeActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:name="uk.co.bbc.android.sport.feature.follows.ui.SearchFollowsActivity" android:theme="@style/Theme.BBCSport.SearchTopics" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="orientation|screenSize" android:name="uk.co.bbc.android.sport.feature.signin.ui.SignInActivity"/>
+        <activity android:name="uk.co.bbc.android.sport.feature.widget.headlines.ui.HeadlinesWidgetConfigActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:name="uk.co.bbc.android.sport.feature.follows.ui.FollowsActivity"/>
+        <service android:name="org.openudid.android.OpenUDIDService">
+            <intent-filter>
+                <action android:name="org.openudid.android.GETUDID"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:exported="false" android:name="io.boxcar.push.ADMIntentService"/>
+        <service android:enabled="true" android:name="io.boxcar.push.GCMIntentService"/>
+        <service android:enabled="true" android:name="uk.co.bbc.android.sport.bastion.HeroWidgetUpdateService"/>
+        <service android:enabled="@bool/headlines_list_widget_enabled" android:name="uk.co.bbc.android.sport.feature.widget.headlines.model.ListRemoteViewsService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <receiver android:enabled="true" android:name="io.boxcar.push.GCMReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="uk.co.bbc.android.sportdomestic"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="uk.co.bbc.android.sport.feature.widget.headlines.receiver.HeadlinesWidgetBroadcastReceiver" android:permission="com.amazon.permission.HERO_WIDGET_INTENT_SENDER">
+            <intent-filter>
+                <action android:name="com.amazon.device.home.action.HERO_WIDGET"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="uk.co.bbc.android.sportdomestic.widget.action.VIEW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="io.boxcar.push.ADMReceiver" android:permission="com.amazon.device.messaging.permission.SEND">
+            <intent-filter>
+                <action android:name="com.amazon.device.messaging.intent.REGISTRATION"/>
+                <action android:name="com.amazon.device.messaging.intent.RECEIVE"/>
+                <category android:name="uk.co.bbc.android.sportdomestic"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="@bool/headlines_widget_enabled" android:label="@string/widget_headline_label" android:name="uk.co.bbc.android.sport.feature.widget.headlines.providers.HeadlinesProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_headlines_info"/>
+        </receiver>
+        <receiver android:enabled="@bool/headlines_list_widget_enabled" android:label="@string/widget_headline_list_label" android:name="uk.co.bbc.android.sport.feature.widget.headlines.providers.HeadlinesListProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_headlines_list_info"/>
+        </receiver>
+        <activity android:launchMode="singleTask" android:name="uk.co.bbc.android.sport.settings.SettingsActivity" android:theme="@style/Theme.BBCSport.Settings"/>
+        <activity android:name="uk.co.bbc.android.sport.feature.push.reminders.ui.LiveEventReminderActivity" android:theme="@style/Theme.BBCSport.Settings"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity" android:theme="@style/Theme.IAPTheme"/>
+        <activity android:name="net.hockeyapp.android.UpdateActivity"/>
+        <activity android:name="net.hockeyapp.android.FeedbackActivity"/>
+        <activity android:name="net.hockeyapp.android.PaintActivity"/>
+        <activity android:name="net.hockeyapp.android.LoginActivity"/>
+        <activity android:name="net.hockeyapp.android.ExpiryInfoActivity"/>
+    </application>
+</manifest>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" android:installLocation="auto" package="com.alaskaairlines.android" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="com.alaskaairlines.android.AlaskaApplication" android:theme="@style/AppTheme">
+        <service android:name="com.alaskaairlines.android.UrbanAirshipJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.alaskaairlines.android.EarlierFlightGeofenceReceiver"/>
+        <service android:name="com.alaskaairlines.android.EarlierFlightJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:enabled="true" android:name="com.alaskaairlines.android.WayfindingGeofenceReceiver"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.alaskaairlines.android.core.rules.geofence.WayFindingAlarmReceiver"/>
+        <service android:name="com.alaskaairlines.android.WayfindingJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.alaskaairlines.android.ebtHelpers.BluetoothService"/>
+        <service android:exported="false" android:name="com.alaskaairlines.android.ebtHelpers.BluetoothDeviceDiscoveryService"/>
+        <activity android:label="@string/app_name" android:name="com.alaskaairlines.android.MainActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/mileage_plan_activity" android:name="com.alaskaairlines.android.MileagePlanActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_section3" android:name="com.alaskaairlines.android.checkin.activity.CheckinFromMenuActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_section3" android:launchMode="singleTop" android:name="com.alaskaairlines.android.checkin.activity.CheckinStartActivity" android:theme="@style/AppThemeTransparent"/>
+        <activity android:label="@string/title_activity_checkin_select_travelers" android:name="com.alaskaairlines.android.checkin.activity.CheckinChoosePassengerActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_mp" android:name="com.alaskaairlines.android.checkin.activity.CheckinEnterMileageInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/title_activity_checkin_seats" android:name="com.alaskaairlines.android.checkin.activity.CheckinChooseSeatActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_documentation" android:name="com.alaskaairlines.android.checkin.activity.CheckinSecureFlightInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateUnchanged"/>
+        <activity android:label="@string/title_activity_checkin_available_upgrades" android:name="com.alaskaairlines.android.checkin.activity.CheckinAvailableUpgradesActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_upgrade_to_firstclass" android:name="com.alaskaairlines.android.checkin.activity.CheckinUpgradeToFirstClassActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden" android:label="@string/cf_confirmation_title" android:name="com.alaskaairlines.android.checkin.activity.CheckinChgFltConfirmationActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_seats" android:name="com.alaskaairlines.android.checkin.activity.ViewFirstClassSeatActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_baggage" android:name="com.alaskaairlines.android.checkin.activity.CheckinBagsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_prohibited_items" android:name="com.alaskaairlines.android.checkin.activity.CheckinSecurityActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_powdery_substances" android:name="com.alaskaairlines.android.checkin.activity.CheckinPowderySubstanceActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_sign_in" android:name="com.alaskaairlines.android.checkin.activity.CheckinLoginActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_payment" android:name="com.alaskaairlines.android.checkin.activity.CheckinPaymentActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:label="@string/title_activity_checkin_boarding_pass" android:name="com.alaskaairlines.android.checkin.activity.CheckinBoardingPassActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:label="@string/seat_summary" android:name="com.alaskaairlines.android.checkin.activity.CheckinSeatSummaryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_flights" android:name="com.alaskaairlines.android.FlightsActivity" android:parentActivityName="com.alaskaairlines.android.MainActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
+        </activity>
+        <activity android:label="@string/title_activity_flight_details" android:name="com.alaskaairlines.android.FlightDetailsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_travelers" android:name="com.alaskaairlines.android.TravelersActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_waitlists" android:name="com.alaskaairlines.android.WaitlistsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="" android:launchMode="singleTop" android:name="com.alaskaairlines.android.preorder.FoodMenuActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_food_details" android:launchMode="singleTop" android:name="com.alaskaairlines.android.preorder.FoodDetailsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_food_summary" android:launchMode="singleTop" android:name="com.alaskaairlines.android.preorder.FoodSummaryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_book_trip" android:name="com.alaskaairlines.android.BookTripActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_contact_us" android:name="com.alaskaairlines.android.ContactUsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_change_seats" android:name="com.alaskaairlines.android.ChooseSeatActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_flight_schedules" android:name="com.alaskaairlines.android.FlightSchedulesActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible"/>
+        <activity android:label="@string/title_activity_tracking_flight_card" android:name="com.alaskaairlines.android.TrackingFlightCardActivity" android:parentActivityName="com.alaskaairlines.android.MainActivity" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
+        </activity>
+        <activity android:label="@string/title_activity_forgot_password" android:name="com.alaskaairlines.android.ForgotCredentialsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/preferred_plus" android:name="com.alaskaairlines.android.ChooseSeatPaymentSummaryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_sign_in" android:name="com.alaskaairlines.android.ChooseSeatLoginActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_checkin_payment" android:name="com.alaskaairlines.android.ChooseSeatPaymentActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_about" android:name="com.alaskaairlines.android.AboutActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_settings" android:name="com.alaskaairlines.android.SettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_section4" android:name="com.alaskaairlines.android.MyAccountActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/schedule_change" android:name="com.alaskaairlines.android.ScheduleChangeResolveActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/mileage_plan_card" android:name="com.alaskaairlines.android.DigitalMembershipCardActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ebt" android:name="com.alaskaairlines.android.ElectronicBagTagActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ebt" android:name="com.alaskaairlines.android.ElectronicBagTagFromFlightCardActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_feed_activity" android:name="com.alaskaairlines.android.FeedActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/add_lap_infants" android:name="com.alaskaairlines.android.checkin.activity.CheckinAddInfantActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:label="@string/add_lap_infants" android:name="com.alaskaairlines.android.checkin.activity.CheckinInternationalLapInfantActivity"/>
+        <activity android:label="@string/title_section4" android:name="com.alaskaairlines.android.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/cf_change_flight_title" android:name="com.alaskaairlines.android.checkin.activity.CheckinChgFltOptionsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/preview_seatmap" android:name="com.alaskaairlines.android.checkin.activity.CheckinChgFltSeatMapActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/confirm_flight_change" android:name="com.alaskaairlines.android.checkin.activity.CheckinChgFltSummaryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/bag_size_label" android:name="com.alaskaairlines.android.BagSizeActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/cf_change_flight_title" android:name="com.alaskaairlines.android.SameDayChangeSummaryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/checkin_health_agreement_title" android:name="com.alaskaairlines.android.checkin.activity.CheckinHealthAgreementActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/checkin_health_agreement_declined_title" android:name="com.alaskaairlines.android.checkin.activity.CheckinHealthAgreementDeclinedActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/add_card" android:name="com.alaskaairlines.android.AddCardActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/add_billing_address" android:name="com.alaskaairlines.android.AddBillingAddressActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/message_center" android:name="com.alaskaairlines.android.MessageCenterActivity" android:screenOrientation="portrait"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <service android:exported="false" android:name="com.urbanairship.push.fcm.AirshipFirebaseMessagingService">
+            <intent-filter android:priority="-1">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:exported="false" android:name="com.urbanairship.iam.html.HtmlActivity" android:theme="@style/UrbanAirship.InAppHtml.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.fullscreen.FullScreenActivity" android:theme="@style/UrbanAirship.InAppFullscreen.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.modal.ModalActivity" android:theme="@style/UrbanAirship.InAppModal.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <receiver android:exported="false" android:name="com.urbanairship.automation.alarms.AlarmOperationReceiver">
+            <intent-filter>
+                <action android:name="com.urbanairship.automation.alarms.ALARM_FIRED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.urbanairship.messagecenter.MessageActivity"/>
+        <activity android:exported="false" android:label="@string/ua_message_center_title" android:name="com.urbanairship.messagecenter.MessageCenterActivity"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="false" android:name="com.urbanairship.push.NotificationProxyActivity" android:taskAffinity="com.urbanairship.push.NotificationProxyActivity" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:exported="false" android:name="com.urbanairship.util.HelperActivity" android:theme="@style/UrbanAirship.HelperActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.google.PlayServicesErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.actions.RateAppActivity" android:theme="@style/UrbanAirship.RateAppActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_RATE_APP_INTENT_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.urbanairship.job.AirshipService"/>
+        <service android:name="com.urbanairship.job.AndroidJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.urbanairship.push.NotificationProxyReceiver">
+            <intent-filter android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED"/>
+                <category android:name="com.alaskaairlines.android"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.urbanairship.locale.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.alaskaairlines.android.urbanairship.provider" android:exported="false" android:name="com.urbanairship.UrbanAirshipProvider"/>
+        <provider android:authorities="com.alaskaairlines.android.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <provider android:authorities="com.alaskaairlines.android.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+    </application>
+</manifest>

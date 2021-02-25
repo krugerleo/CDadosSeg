@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="29" android:compileSdkVersionCodename="10" android:installLocation="auto" package="com.aa.android" platformBuildVersionCode="29" platformBuildVersionName="10">
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.CAMERA" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <permission android:name="com.aa.android.appwidget.permission.UPDATE_DISPLAYED_MBP" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.aa.android.appwidget.permission.UPDATE_DISPLAYED_MBP"/>
+    <permission android:name="com.aa.android.receivers.permission.SCHEDULE_FLIGHT_ALARM" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.aa.android.receivers.permission.SCHEDULE_FLIGHT_ALARM"/>
+    <permission android:name="com.aa.android.receivers.permission.MBP_REMINDER_BROADCAST" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.aa.android.receivers.permission.MBP_REMINDER_BROADCAST"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.example.googlemapapp.permission.MAPS_RECEIVE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.cursus.sky.cursus.permission.C2D_MESSAGE"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-feature android:name="android.hardware.screen.portrait"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <instrumentation android:functionalTest="false" android:handleProfiling="false" android:label="Tests for com.aa.android.flight.test" android:name="androidx.test.runner.AndroidJUnitRunner" android:targetPackage="com.aa.android.flight.test"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-feature android:name="android.hardware.camera.any"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="true" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.aa.android.AApplication" android:networkSecurityConfig="@xml/network_security_config" android:supportsRtl="true" android:theme="@style/Theme.American">
+        <meta-data android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="ocr"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <provider android:authorities="com.aa.android.provider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.aa.android.view.SplashActivity" android:noHistory="true" android:theme="@style/Theme.American.SplashScreen">
+            <intent-filter android:label="Launch American Airlines App">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="www.aa.com" android:pathPrefix="/launch" android:scheme="http"/>
+                <data android:host="launch" android:scheme="americanairlines"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="www.aa.com" android:pathPattern="/reservation/view/find-your-trip" android:scheme="https"/>
+                <data android:host="www.aa.com" android:pathPattern="/reservation/view/find-your-reservation" android:scheme="https"/>
+            </intent-filter>
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:label="@string/app_name" android:launchMode="singleTop" android:name="com.aa.android.home.view.HomeActivity" android:theme="@style/Theme.American.Home" android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="com.aa.android.action.shortcut_checkin"/>
+                <action android:name="com.aa.android.action.terminal_maps"/>
+                <action android:name="com.aa.android.action.view_next_flight"/>
+                <action android:name="com.aa.android.action.chat"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:exported="false" android:name="com.aa.android.HomeActivity" android:targetActivity="com.aa.android.home.view.HomeActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.aa.android.action.home"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.aa.android.webview.BridgedWebViewActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/aadvantage_login" android:name="com.aa.android.view.AAdvantageAccountLoginActivity" android:theme="@style/Theme.American.Legacy.Login"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/aadvantage_signup" android:name="com.aa.android.view.AAdvantageEnrollActivity" android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="open-enrollment" android:scheme="app"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/change_seats_short" android:name="com.aa.android.seats.view.ChangeSeatActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.aa.android.seats.view.ChangeSeatPurchaseActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.aa.android.flightinfo.view.AAFlightcardActivity" android:theme="@style/Theme.American.ActionView.NoActionBar"/>
+        <activity-alias android:exported="false" android:name="com.aa.android.FlightcardActivity" android:targetActivity="com.aa.android.flightinfo.view.AAFlightcardActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.aa.android.action.flight_card"/>
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.aa.android.action.show_flight_card_from_push"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize" android:hardwareAccelerated="true" android:label="@string/app_name" android:name="io.card.payment.CardIOActivity"/>
+        <activity android:name="com.aa.android.basiceconomyrestrictions.view.AlertActivity" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer"/>
+        <activity android:configChanges="orientation" android:name="com.aa.android.shopping.view.PurchaseActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:label="@string/bags" android:name="com.aa.android.bags.view.AAPrepaidBagSelectionActivity" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer"/>
+        <activity android:name="com.aa.android.view.NotificationPromptActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="" android:name="com.aa.android.booking.view.TravelCalendarActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer.NoStatusBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="orientation|screenSize" android:label="" android:name="com.aa.android.booking.view.AirportSearchActivity2" android:screenOrientation="portrait" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer.NoStatusBar" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.aa.android.dr.view.ReaccomFlightOptionsActivity"/>
+        <activity android:name="com.aa.android.dr.view.ReconcileFlightActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/volunteer_option_title" android:name="com.aa.android.view.auction.AuctionOfferActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/what_to_expect" android:name="com.aa.android.auction.view.AuctionDialogFragmentActivity" android:theme="@style/Theme.American.TransparentNoActionBarActivity"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/flexible_travel_plans" android:name="com.aa.android.auction.view.AuctionBannerOfferActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:name="com.aa.android.seatcoupons.view.CardActivity" android:theme="@style/Theme.American.TransparentActivity"/>
+        <activity android:label="@string/Flight_credit" android:name="com.aa.android.storedvalue.view.StoredValueActivity" android:theme="@style/Theme.American"/>
+        <receiver android:exported="true" android:label="@string/widget_mbp" android:name="com.aa.android.appwidget.AAppMbpWidgetProvider" android:permission="com.aa.android.appwidget.permission.UPDATE_DISPLAYED_MBP">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_mbp"/>
+        </receiver>
+        <receiver android:name="com.aa.android.receivers.FlightAlarmReceiver" android:permission="com.aa.android.receivers.permission.SCHEDULE_FLIGHT_ALARM"/>
+        <receiver android:exported="false" android:name="com.aa.android.receivers.CheckinReminderReceiver"/>
+        <service android:exported="false" android:name="com.aa.android.network.AANetworkService"/>
+        <service android:exported="false" android:name="com.aa.android.services.DataMigrationService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.aa.android.appwidget.AAppMbpWidgetService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <service android:exported="false" android:name="com.aa.android.services.LocationService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.aa.android.services.checkinreminder.CheckinReminderService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:exported="false" android:name="com.aa.android.util.AppShortcutsService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:name="com.cursus.sky.grabsdk.CursusMobileShoppingSortFragmentHolder"/>
+        <activity android:label="" android:name="com.cursus.sky.grabsdk.CursusCartUpsell" android:theme="@style/CursusTheme.Transparent"/>
+        <activity android:label="@string/cursus_cart_title" android:name="com.cursus.sky.grabsdk.CursusCart"/>
+        <activity android:name="com.cursus.sky.grabsdk.GrabGuestCheckoutActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="com.cursus.sky.grabsdk.GrabGuestBillingActivity"/>
+        <activity android:name="com.cursus.sky.grabsdk.CursusEndUserLiscenceAgreement"/>
+        <activity android:name="com.cursus.sky.grabsdk.NoConnectionActivity"/>
+        <activity android:name="com.cursus.sky.grabsdk.paymentMethods.CursusPaymentMain"/>
+        <activity android:name="com.cursus.sky.grabsdk.paymentMethods.CursusPaymentAddCard"/>
+        <activity android:name="com.cursus.sky.grabsdk.paymentMethods.CursusCheckoutPaymentMainActivity"/>
+        <activity android:name="com.cursus.sky.grabsdk.legal.CursusEULegalNoticeActivity"/>
+        <activity android:name="com.cursus.sky.grabsdk.confirmation.CursusPlaceOrderActivity" android:theme="@style/OrdersTheme"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/APP_ID"/>
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAFh4m2J0tY_oRrOEESbGneCCUBTGLxzqA"/>
+        <activity android:name="io.card.payment.DataEntryActivity"/>
+        <activity android:label="@string/app_name" android:name="com.cursus.sky.grabsdk.CursusHomeActivity"/>
+        <activity android:label="Orders" android:name="com.cursus.sky.grabsdk.OrdersHistoryActivity" android:screenOrientation="portrait" android:theme="@style/OrdersTheme"/>
+        <activity android:label="Tipping" android:name="com.cursus.sky.grabsdk.CursusTippingActivity" android:screenOrientation="portrait" android:theme="@style/OrdersTheme"/>
+        <activity android:label="Rating" android:name="com.cursus.sky.grabsdk.CursusTippingRatingActivity" android:screenOrientation="portrait" android:theme="@style/OrdersTheme"/>
+        <activity android:label="@string/search_airports" android:launchMode="singleTop" android:name="com.cursus.sky.grabsdk.AirportSelectorActivity" android:screenOrientation="portrait" android:theme="@style/AirportSearchTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:label="@string/country_selector_title" android:name="com.cursus.sky.grabsdk.countryselector.CountrySelectorActivity" android:screenOrientation="portrait" android:theme="@style/AirportSearchTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:name="com.cursus.sky.grabsdk.StoreClosedActivity" android:screenOrientation="portrait"/>
+        <activity android:label="" android:name="com.cursus.sky.grabsdk.StoreInventoryActivity" android:screenOrientation="portrait" android:theme="@style/OrdersTheme"/>
+        <activity android:label="" android:name="com.cursus.sky.grabsdk.RetailInventoryActivity" android:screenOrientation="portrait" android:theme="@style/OrdersTheme"/>
+        <activity android:label="" android:name="com.cursus.sky.grabsdk.StoreShoppingActivity" android:screenOrientation="portrait"/>
+        <activity android:label="" android:name="com.cursus.sky.grabsdk.RetailShoppingActivity" android:screenOrientation="portrait"/>
+        <service android:name="com.cursus.sky.grabsdk.GeofenceTransitionsIntentService"/>
+        <meta-data android:name="io.fabric.ApiKey" android:value="61734706b32e4782137aad03cb2b6b5ad9dca2be"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.aa.android.account.view.AccountActivity" android:screenOrientation="portrait" android:theme="@style/MyAccountModuleTheme.AccountSummary">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/account_promotions" android:name="com.aa.android.account.view.PromotionsActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/account_wallet" android:name="com.aa.android.account.view.WalletActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/five_hundread_mile_upgrades" android:name="com.aa.android.account.view.MilesAndUpgradesDetailActivity"/>
+        <activity android:label="@string/aadvantage_card" android:name="com.aa.android.account.view.AAdvantageCardActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/function_contact_american" android:name="com.aa.android.contact.view.ContactAAActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/info" android:name="com.aa.android.aboutapp.view.AboutActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/legal_notices" android:name="com.aa.android.aboutapp.view.LegalNoticeActivity"/>
+        <activity android:label="@string/boarding_passes" android:name="com.aa.android.boardingpass.view.BoardingPassActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:label="@string/passenger_selection_title" android:name="com.aa.android.boardingpass.view.BoardingPassPassengerSelectionActivity"/>
+        <activity android:label="@string/boarding_passes" android:name="com.aa.android.boardingpass.view.BoardingPassSelectionActivity"/>
+        <activity android:label="@string/boarding_passes" android:name="com.aa.android.boardingpass.view.BoardingPassProgressActivity"/>
+        <activity android:label="@string/boarding_passes" android:name="com.aa.android.boardingpass.view.BoardingPassListActivity"/>
+        <service android:exported="false" android:name="com.aa.android.services.DownloadService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/debug_options" android:name="com.aa.android.tools.view.DebugOptionsActivity" android:theme="@style/Theme.American.DayNight"/>
+        <activity android:label="@string/edit_mobile_links" android:name="com.aa.android.tools.view.EditMobileLinksActivity" android:theme="@style/Theme.American.DayNight"/>
+        <activity android:label="@string/Relevancy_Settings" android:name="com.aa.android.tools.view.MockRelevancySettingsActivity" android:theme="@style/Theme.American.DayNight"/>
+        <activity android:label="Reservation List" android:name="com.aa.android.tools.view.ReservationListActivity" android:theme="@style/Theme.American.DayNight"/>
+        <activity android:label="@string/select_an_aircraft" android:name="com.aa.android.tools.view.AircraftSelectionActivity" android:theme="@style/Theme.American.DayNight">
+            <meta-data android:name="android.app.searchable" android:resource="@xml/aircraft_searchable"/>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.aa.android.seats.view.aircraft.AircraftSelectionActivity.START"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.aa.android.tools.view.GatingActivity" android:theme="@style/Theme.American.DayNight"/>
+        <activity android:name="com.aa.android.cobrand.view.CobrandCitiOfferDetailActivity"/>
+        <activity android:name="com.aa.android.cobrand.view.CobrandConfirmationCitiActivity"/>
+        <activity android:configChanges="keyboardHidden" android:label="@string/flight_alerts_title" android:name="com.aa.android.flight.view.FlightAlertsActivity" android:screenOrientation="portrait"/>
+        <uses-library android:name="com.google.android.maps" android:required="true"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/flight_status" android:name="com.aa.android.flightinfo.flightNumber.FlightNumberSelectorActivity" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer.NoStatusBar" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:label="@string/title_activity_instant_upsell_upgrade_trip" android:launchMode="singleInstance" android:name="com.aa.android.instantupsell.view.InstantUpsellUpgradeTripActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:name="com.aa.android.instantupsell.view.ConfirmationActivity" android:screenOrientation="portrait" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer.NoStatusBar"/>
+        <activity android:label="@string/function_cancel_trip" android:name="com.aa.android.managetrip.cancel.CancelTripActivity"/>
+        <activity android:label="@string/track_your_bags" android:name="com.aa.android.trackyourbags.view.TrackYourBagsActivity" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity-alias android:exported="false" android:name="com.aa.android.trackyourbags.TrackYourBagsActivity" android:targetActivity="com.aa.android.trackyourbags.view.TrackYourBagsActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.aa.android.action.track_your_bags"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/function_terminal_maps" android:name="com.aa.android.travelinfo.view.TerminalMapListActivity" android:theme="@style/Theme.American.Legacy"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/function_terminal_maps" android:name="com.aa.android.travelinfo.view.TerminalMapActivity"/>
+        <activity android:label="@string/admirals_club" android:name="com.aa.android.travelinfo.view.AdmiralsClubListActivity" android:theme="@style/Theme.American.Legacy"/>
+        <activity android:label="@string/title_upgrade_trip" android:name="com.aa.android.view.AfterCheckInActivity" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:label="@string/hazmat_title" android:name="com.aa.android.view.HazmatActivity" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:label="@string/hazmat_eu_title" android:name="com.aa.android.view.EUProhibitedItemsActivity" android:theme="@style/Theme.American.SimpleCase"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.aa.android.international.view.PassengerDetailActivity" android:theme="@style/Theme.American.SimpleCase" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/verify_documents" android:name="com.aa.android.international.view.PassportStatusActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/validate_passenger" android:name="com.aa.android.international.view.ValidatePassportActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="Passport Scanning" android:name="com.aa.android.nfc.view.PassportNfcInputDataActivity" android:theme="@style/Theme.American.SimpleCase">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.aa.android.nfc.view.PassportNfcScanActivity" android:theme="@style/Theme.American.TransparentNoActionBarActivity">
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/nfc_tech_filter"/>
+        </activity>
+        <activity android:label="@string/same_day_flight_change_title" android:name="com.aa.android.samedayflightchange.view.SameDayFlightChangeActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/sdfc_new_flight" android:name="com.aa.android.samedayflightchange.view.SameDayFlightChangeNewFlightsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/view_aircraft" android:name="com.aa.android.seats.view.aircraft.AircraftViewActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.aa.android.upgrades.view.ControllerActivity"/>
+        <activity android:label="@string/Waitlist" android:name="com.aa.android.upgrades.view.WaitlistActivity" android:theme="@style/Theme.American.WaitlistActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:name="com.aa.android.webview.WebViewActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:name="com.aa.android.webview.ChromeCustomTabsActivity"/>
+        <service android:exported="false" android:name="com.aa.android.notifications.service.PushRegistrationService" android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="com.aa.android.action.sync_push"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.aa.android.action.push_refresh_token"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.aa.android.action.sync_push_device"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/aanotif_main_channel_id"/>
+        <service android:exported="false" android:name="com.aa.android.notifications.service.PushListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:name="com.aa.android.lfbu.view.LfbuActivity" android:theme="@style/Theme.American.NoActionBar.NoNavigationDrawer"/>
+        <activity android:name="com.aa.android.ui.american.slider.view.SliderActivity" android:theme="@style/Theme.American.Slider.Translucent">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:label="" android:name="com.aa.android.ui.american.cardview.view.CardviewActivity" android:theme="@style/Theme.American.Cardview" android:windowSoftInputMode="adjustPan"/>
+        <meta-data android:name="com.indooratlas.android.sdk.API_KEY" android:value="7392fd1a-cf8d-428c-b99f-ce97392e49cb"/>
+        <meta-data android:name="com.indooratlas.android.sdk.API_SECRET" android:value="FN3rmipDG0sNA8LcOtIRYiQEACk3Pmk8P1MvhYFpzc0D6uW3CG7QLKLLEdMiOwsDZP8Fd6hpwN7da1quOXhOWjRe7qI+Hy4tEsBGrWaOoNBoYTOwXi7tqF9olm9nuw=="/>
+        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
+        <service android:name="com.locuslabs.sdk.ibeacon.BeaconService"/>
+        <service android:name="com.locuslabs.sdk.ibeacon.service.IBeaconService"/>
+        <service android:name="com.locuslabs.sdk.ibeacon.IBeaconIntentProcessor"/>
+        <activity android:label="@string/asapp_title" android:launchMode="singleTask" android:name="com.asapp.chatsdk.activities.ASAPPChatActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:exported="false" android:label="" android:name="com.asapp.chatsdk.activities.ASAPPDetailsActivity" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:label="" android:name="com.asapp.chatsdk.activities.ASAPPImageViewerActivity"/>
+        <receiver android:enabled="false" android:exported="false" android:name="com.aa.android.network.receivers.ConnectivityMonitor">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ml.vision.VisionRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ml.common.CommonComponentRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <service android:exported="false" android:name="com.urbanairship.push.fcm.AirshipFirebaseMessagingService">
+            <intent-filter android:priority="-1">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:name="com.aa.android.sharewear.WearService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.aa.android.sharewear.services.WearMessageService"/>
+        <service android:exported="false" android:name="com.aa.android.sharewear.services.WearDataService"/>
+        <service android:exported="false" android:name="com.aa.android.sharewear.services.WearRunnerService"/>
+        <service android:exported="false" android:name="com.aa.android.sharewear.services.RunnerService"/>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.aa.android.mlkitinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.mlkit.common.internal.MlKitInitProvider"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="false" android:name="com.urbanairship.messagecenter.MessageActivity"/>
+        <activity android:exported="false" android:label="@string/ua_message_center_title" android:name="com.urbanairship.messagecenter.MessageCenterActivity"/>
+        <activity android:exported="false" android:name="com.urbanairship.iam.html.HtmlActivity" android:theme="@style/UrbanAirship.InAppHtml.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.fullscreen.FullScreenActivity" android:theme="@style/UrbanAirship.InAppFullscreen.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.iam.modal.ModalActivity" android:theme="@style/UrbanAirship.InAppModal.Activity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <receiver android:exported="false" android:name="com.urbanairship.automation.alarms.AlarmOperationReceiver">
+            <intent-filter>
+                <action android:name="com.urbanairship.automation.alarms.ALARM_FIRED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.urbanairship.push.NotificationProxyActivity" android:taskAffinity="com.urbanairship.push.NotificationProxyActivity" android:theme="@android:style/Theme.NoDisplay"/>
+        <activity android:exported="false" android:name="com.urbanairship.util.HelperActivity" android:theme="@style/UrbanAirship.HelperActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.google.PlayServicesErrorActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:name="com.urbanairship.actions.RateAppActivity" android:theme="@style/UrbanAirship.RateAppActivity">
+            <meta-data android:name="com.urbanairship.push.iam.EXCLUDE_FROM_AUTO_SHOW" android:value="true"/>
+            <intent-filter>
+                <action android:name="com.urbanairship.actions.SHOW_RATE_APP_INTENT_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.urbanairship.job.AirshipService"/>
+        <service android:name="com.urbanairship.job.AndroidJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.urbanairship.push.NotificationProxyReceiver">
+            <intent-filter android:priority="-999">
+                <action android:name="com.urbanairship.push.OPENED"/>
+                <category android:name="com.aa.android"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.urbanairship.locale.LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.aa.android.urbanairship.provider" android:exported="false" android:name="com.urbanairship.UrbanAirshipProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <provider android:authorities="com.aa.android.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <provider android:authorities="com.aa.android.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <activity android:enabled="false" android:exported="false" android:launchMode="singleInstance" android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity" android:process=":playcore_missing_splits_activity" android:stateNotNeeded="true"/>
+        <activity android:enabled="false" android:exported="false" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:stateNotNeeded="true" android:theme="@style/Theme.PlayCore.Transparent"/>
+        <service android:enabled="false" android:exported="true" android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"/>
+        <meta-data android:name="com.google.android.wearable.beta.app" android:resource="@xml/android_wear_micro_apk"/>
+        <activity android:name="com.aa.android.imagetextparser.PhotoScanActivity" android:screenOrientation="portrait"/>
+        <uses-library android:name="androidx.camera.extensions.impl" android:required="false"/>
+        <meta-data android:name="com.android.dynamic.apk.fused.modules" android:value="base,imagetextparser"/>
+        <meta-data android:name="com.android.stamp.source" android:value="https://play.google.com/store"/>
+        <meta-data android:name="com.android.stamp.type" android:value="STAMP_TYPE_STANDALONE_APK"/>
+        <meta-data android:name="com.android.vending.splits" android:resource="@2114519040"/>
+        <meta-data android:name="com.android.vending.derived.apk.id" android:value="1"/>
+    </application>
+</manifest>
