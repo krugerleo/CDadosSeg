@@ -1,6 +1,6 @@
 ## Exploração de Dados - DDoS dataset (https://www.kaggle.com/devendra416/ddos-datasets) 
 
-- Que tipos de dados você tem, majoritariamente (atributos numéricos, textuais)?
+- Que tipos de dados você tem, majoritariamente (atributos numéricos, textuais)?<br/>
   Pelos tipos de dados definidos temos majoriariamente dados numéricos
 ```javascript  
 dtypes = {
@@ -89,16 +89,17 @@ dtypes = {
 }
  ```
 
-- Qual seu objetivo com esse dataset?
+- Qual seu objetivo com esse dataset?<br/>
   Poder realizar diferenciação de ataques DDoS e trafego normal, detecção de tendencias sobre ataques DDoS como tipo, duração, horário, e talvez categorização de força por quantidade do fluxo.
 
-- Seu dataset é rotulado de que maneira?
-    O _dataset_ foi gerado e rotulado automaticamente utilizando [CICFlow](https://www.unb.ca/cic/research/applications.html#CICFlowMeter).
+- Seu dataset é rotulado de que maneira?<br/>
+    O _dataset_ foi gerado e rotulado automaticamente utilizando [CICFlow](https://www.unb.ca/cic/research/applications.html#CICFlowMeter).<br/>
     O _dataset_ balanceado que utilizaremos é dividido em benignos e DDoS, onde benignos representam trafego de rede não prejudicial e o segundo os DDoS efetivamente.
 
-- Como é a distribuição dos dados do dataset?
-    Plotando em gráfico os dados da coluna label temos verificamos uma distribuição quase homogenea entre trafego benigno e DDoS.
-- Quais colunas/atributos você julga ser interessante manter e remover? Por quê?
+- Como é a distribuição dos dados do dataset?<br/>
+    Plotando em gráfico os dados da coluna label temos verificamos uma distribuição quase homogenea entre trafego benigno e DDoS.<br/>
+    ![Label plot](https://github.com/krugerleo/CDadosSeg/blob/master/T3/Screenshot_1.png)
+- Quais colunas/atributos você julga ser interessante manter e remover? Por quê?<br/>
     Partindo dos nossos objetivos com o _dataset_, a primeira vista é interessante manter as seguintes colunas:
     ```
     'Src IP': 'category',
